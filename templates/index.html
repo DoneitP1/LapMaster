@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>F1 Telemetry Chart</title>
+    <!-- Chart.js from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>F1 Telemetry Chart</h1>
+    <p>This page retrieves the telemetry data (driver: VER) from the <code>/api/telemetry</code> endpoint and displays speed vs. time.</p>
+
+    <!-- Canvas element for the chart -->
+    <canvas id="telemetryChart" width="800" height="400"></canvas>
+
+    <!-- JavaScript to fetch data and render the chart -->
+    <script>
+        // Fetch data from /api/telemetry
+        fetch('/api/telemetry')
+            .then(response => response.json())
+            .then(data => {
+                // Check for errors from the server
+                if (data.error) {
+                    console.error('API error:', data.error);
+                    document.body.innerHTML += `<p style="color:red;">API error: ${data.error}</p>`;
+                    return;
+                }
+
+                // data.labels => X-axis (seconds)
+                // data.values => Y-axis (speed)
+                const ctx = document.getElementById('telemetryChart').getContext('2d');
+
+                // Create a line chart with Chart.js
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: data.labels,
+                        datasets: [{
+                            label: 'Speed (km/h)',
+                            data: data.values,
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                            fill: false,
+                            tension: 0.1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Time (seconds)'
+                                }
+                            },
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: 'Speed (km/h)'
+                                }
+                            }
+                        }
+                    }
+                });
+            })
+            .catch(error => {
+                console.error('Fetch error:', error);
+                document.body.innerHTML += `<p style="color:red;">Fetch error: ${error}</p>`;
+            });
+    </script>
+</body>
+</html>
