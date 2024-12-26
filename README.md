@@ -38,6 +38,12 @@ Submit a pull request!
 
 ---
 
+## 📜 License
+
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
+
+---
+
 ## 🛠️ Installation
 
 1. Clone the repository to your local machine:
