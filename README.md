@@ -1,6 +1,6 @@
 # 🏎️ Lap Master
 
-**Telemetry Pulse** is a modern web application designed for analysing and visualising Formula 1 telemetry data. With real-time performance metrics, intuitive visualisations, and reliable data powered by the Fast F1 API, it’s the ultimate tool for fans, engineers, and strategists passionate about motorsport analytics.
+**Lap Master** is a modern web application designed for analysing and visualising Formula 1 telemetry data. With real-time performance metrics, intuitive visualisations, and reliable data powered by the Fast F1 API, it’s the ultimate tool for fans, engineers, and strategists passionate about motorsport analytics.
 
 ---
 
