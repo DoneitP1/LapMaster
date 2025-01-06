@@ -75,7 +75,8 @@ form label {
   margin-bottom: 5px;
 }
 
-form input {
+form input,
+form select {
   width: 100%;
   padding: 8px;
   border: 1px solid #ccc;
@@ -105,19 +106,66 @@ form button:hover {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   max-width: 800px;
   width: 100%;
+  margin-top: 20px;
 }
 
 .chart-container h2 {
   margin-bottom: 1rem;
 }
 
-/* Footer */
-footer {
-  background-color: #212529;
-  color: white;
+/* Sürücü Listesi */
+.driver-list {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.driver-item {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 150px;
   text-align: center;
-  padding: 1rem;
-  position: relative;
-  bottom: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.driver-item:hover {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+/* Sürücü Profili */
+.driver-profile {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  max-width: 400px;
   width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.driver-photo {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.driver-profile h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.driver-profile p {
+  margin: 5px 0;
+  font-weight: bold;
 }
