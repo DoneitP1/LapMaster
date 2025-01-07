@@ -6,7 +6,6 @@
 
 ## 🚀 Features
 
-- 📊 **Real-Time Telemetry Data**: Analyse speed, lap performance, and driver metrics seamlessly.
 - 🕹️ **Interactive Design**: User-friendly interface tailored for racing enthusiasts.
 - 🏁 **Driver-Specific Insights**: Dive into detailed stats for individual drivers like Charles Leclerc, Max Verstappen, Lewis Hamilton.
 - 🌐 **API-Powered**: Powered by the **Fast F1 API** for accurate and robust data.
@@ -21,6 +20,7 @@
 ---
 
 ## 👩‍💻 Future Features
+📊 **Real-Time Telemetry Data**: Analyse speed, lap performance, and driver metrics seamlessly.
 📈 **Graph Visualisations**: Dynamic charts for telemetry data.
 🗂️ **Multi-Driver Support**: Compare telemetry across drivers.
 🌎 **Global Accessibility**: Deployment on cloud platforms (e.g., AWS, Heroku).
