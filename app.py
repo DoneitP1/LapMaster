@@ -49,7 +49,6 @@ DRIVER_PROFILES = {
     "ALB": {"name": "Alexander Albon", "team": "Williams", "wins": 0, "poles": 0, "championships": 0,
             "photo_url": DEFAULT_PHOTO_URL}
 }
-
 DRIVER_NUMBER_TO_CODE = {
     "1": "VER",
     "44": "HAM",
@@ -72,12 +71,9 @@ DRIVER_NUMBER_TO_CODE = {
     "21": "DEV",
     "23": "ALB"
 }
-
-
 @app.route('/')
 def home():
     return {"message": "Formula 1 Telemetry Tool API"}
-
 
 @app.route('/api/races/<int:year>', methods=['GET'])
 def get_races(year):
@@ -88,7 +84,6 @@ def get_races(year):
         return jsonify({"races": races})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
-
 
 @app.route('/api/drivers/<int:year>/<int:round>/<string:session_type>', methods=['GET'])
 def get_drivers(year, round, session_type):
@@ -101,7 +96,6 @@ def get_drivers(year, round, session_type):
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-
 @app.route('/api/telemetry/<int:year>/<int:round>/<string:driver>', methods=['GET'])
 def get_telemetry(year, round, driver):
     try:
@@ -109,7 +103,7 @@ def get_telemetry(year, round, driver):
         session = fastf1.get_session(year, round, 'R')  # "R" -> Race session
         session.load()
         laps = session.laps.pick_driver(driver)
-        telemetry = laps.iloc[0].get_telemetry()  # İlk turun telemetri verisi alınır
+        telemetry = laps.iloc[0].get_telemetry()
 
         data = {
             "speed": telemetry['Speed'].tolist(),
@@ -123,10 +117,10 @@ def get_telemetry(year, round, driver):
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-
 @app.route('/api/drivers/profile/<driver_code>', methods=['GET'])
 def get_driver_profile(driver_code):
-   
+    """ Returns the driver profile based on the specified driver_code."""
+
     driver_code = DRIVER_NUMBER_TO_CODE.get(driver_code, driver_code).upper()
 
     profile = DRIVER_PROFILES.get(driver_code)
@@ -139,3 +133,4 @@ def get_driver_profile(driver_code):
 
 if __name__ == '__main__':
     app.run(debug=True)
+    
