@@ -49,6 +49,7 @@ DRIVER_PROFILES = {
     "ALB": {"name": "Alexander Albon", "team": "Williams", "wins": 0, "poles": 0, "championships": 0,
             "photo_url": DEFAULT_PHOTO_URL}
 }
+
 DRIVER_NUMBER_TO_CODE = {
     "1": "VER",
     "44": "HAM",
@@ -71,6 +72,7 @@ DRIVER_NUMBER_TO_CODE = {
     "21": "DEV",
     "23": "ALB"
 }
+
 @app.route('/')
 def home():
     return {"message": "Formula 1 Telemetry Tool API"}
@@ -130,7 +132,18 @@ def get_driver_profile(driver_code):
     else:
         return jsonify({"error": "Driver not found"}), 404
 
+# Yeni Race Results endpoint'i
+@app.route('/api/results/<int:year>/<int:round>', methods=['GET'])
+def get_race_results(year, round):
+    try:
+        fastf1.Cache.enable_cache('cache')
+        session = fastf1.get_session(year, round, 'R')
+        session.load()
+        results = session.results[['Position', 'Abbreviation', 'FullName', 'TeamName', 'Points']].to_dict('records')
+        return jsonify({"results": results})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 
 if __name__ == '__main__':
     app.run(debug=True)
-    
