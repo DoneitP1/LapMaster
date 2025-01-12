@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './components/Home';
 import Drivers from './components/Drivers';
 import Telemetry from './components/Telemetry';
+import RaceResults from './RaceResults';
 import './index.css';
 
 function App() {
@@ -25,11 +26,18 @@ function App() {
     <Router>
       <div>
         <header>
-          <h1>Formula 1 Telemetry Tool</h1>
+          <h1>Lap Master</h1>
           <nav>
-            <Link to="/">Home</Link>
-            <Link to="/drivers">Drivers</Link>
-            <Link to="/telemetry">Telemetry</Link>
+            {[
+              { path: '/', label: 'Home' },
+              { path: '/drivers', label: 'Drivers' },
+              { path: '/telemetry', label: 'Telemetry' },
+              { path: '/race-results', label: 'Race Results' },
+            ].map((link, index) => (
+              <Link key={index} to={link.path}>
+                {link.label}
+              </Link>
+            ))}
             <button className="theme-toggle-button" onClick={toggleTheme}>
               {isDarkTheme ? 'Light Mode' : 'Dark Mode'}
             </button>
@@ -40,10 +48,11 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/drivers" element={<Drivers />} />
             <Route path="/telemetry" element={<Telemetry />} />
+            <Route path="/race-results" element={<RaceResults />} />
           </Routes>
         </main>
         <footer>
-          <p>&copy; 2024 Formula 1 Telemetry Tool. All rights reserved.</p>
+          <p>&copy; 2024 Lap Master. All rights reserved.</p>
         </footer>
       </div>
     </Router>
