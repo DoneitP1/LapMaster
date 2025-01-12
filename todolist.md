@@ -13,7 +13,7 @@ This project aims to provide a comprehensive telemetry analysis tool for iRacing
 - [ ] Data Download Support*  
 - [ ] Performance Comparison Module  
 - [x] Driver Profiles  
-- [ ] Race Results Table*  
+- [x] Race Results Table*  
 
 ---
 
